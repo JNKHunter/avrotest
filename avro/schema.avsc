@@ -1,0 +1,8 @@
+{
+    "type": "record",
+    "name": "ClickRecord",
+    "namespace": "com.events",
+    "fields": [
+        {"name": "session_id", "type": "string"}
+    ]
+}
