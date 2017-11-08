@@ -18,9 +18,9 @@ sbtavrohugger.SbtAvrohugger.scavroSettings
 libraryDependencies ++= Seq(
   "org.apache.kafka" % "kafka-clients" % "1.0.0",
   "org.oedura" %% "scavro" % "1.0.2",
-  "io.confluent" % "kafka-avro-serializer" % confluentVersion
+  "io.confluent" % "kafka-avro-serializer" % confluentVersion,
+  "org.scalatest" % "scalatest_2.11" % "3.0.4" % "test"
   
 )
 
 mainClass in Compile := Some("HelloAvro")
-

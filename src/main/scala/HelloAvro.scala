@@ -1,6 +1,6 @@
 import java.util.{Properties, Random}
 
-import com.events.model.ClickRecord
+import com.events.ClickRecord
 import org.apache.avro.generic.{GenericData, IndexedRecord}
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 
@@ -21,11 +21,12 @@ object HelloAvro extends App {
   props.put("value.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer")
   props.put("schema.registry.url", "http://localhost:8081")
 
-  val producer = new KafkaProducer[String, IndexedRecord](props)
+  //val producer = new KafkaProducer[String, IndexedRecord](props)
+  val sink = new Sink(new KafkaProducer[String, ClickRecord](props))
   val record = new ClickRecord("123")
 
-  val data = new ProducerRecord[String, IndexedRecord](topic, record.toAvro)
+  val data = new ProducerRecord[String, ClickRecord](topic, record)
 
-  producer.send(data)
-  producer.close()
+  sink.producer.send(data)
+  sink.producer.close()
 }
