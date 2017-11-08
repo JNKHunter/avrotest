@@ -13,11 +13,15 @@ class SinkTest extends FunSuite with BeforeAndAfterEach {
   var sink:Sink[String, ClickRecord] = _
 
   override def beforeEach() {
-
-    sink = new Sink(new MockProducer[String, ClickRecord](true, new StringSerializer(), new KafkaAvroSerializer()))
+    println("before")
+    //sink = new Sink(new MockProducer[String, ClickRecord](true, new StringSerializer(), new KafkaAvroSerializer()))
   }
 
   override def afterEach() {
+    println("after")
+  }
 
+  test("Hello world test") {
+    println("hello world")
   }
 }
